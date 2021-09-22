@@ -1,5 +1,37 @@
 # Time Track
 
+Missy Stiner | Micah Duehring | Gbenga Ojo | Jack St. Pierre
+
+ ## Description
+ 
+ AS A 40-yard dasher <br/>
+ I WANT to chart my performance over time <br/>
+ SO THAT I can strive for improvement. <br/>
+
+ Runners can sign up, login, add their times for one activity, and view all times for that one activity. 40-yard dash data is represented in this demo. 
+
+ ## Technologies Used
+
+- git
+- ES6
+- billboard.js
+- Bootstrap
+- MySQL & Sequalize ORM
+- Express.js & Node.js
+- Handlebars.js
+- Heroku
+- Authentication
+ 
+ ## Screenshot
+ 
+ ## Link to Deployed Application
+
+ ## Future Development Plans
+ - Users will be able to log times for more than one activity to see performance at-a-glance for multiple sports.
+ - Best entry would be highlighted in a static position as the featured personal best to try to beat.
+ - This can be dulicated and used for other activity tracking beyond sports like playing video games.
+
+# DELETE ALL CONTENT BELOW BEFORE TURNING IN FINAL PROJECT
 ## Project Requirements
 You and your group will use everything you’ve learned over the past six weeks to create a full-stack application that works with real-world data to solve a real-world challenge. Even more than your first group project, this project will provide you with an opportunity to demonstrate your problem-solving skills, which employers will want to see when you begin to interview for development roles. Once again, the user story and acceptance criteria will depend on the project that you create, but your project must fulfill some specific requirements.
 
