@@ -12,6 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // turn on connection to db and server
+// force false - 
+// force true = database connection must sync with model definitions and associations.
+// sync = true makes tables recreate if there are any association changes.
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
