@@ -25,6 +25,7 @@ Missy Stiner | Micah Duehring | Gbenga Ojo | Jack St. Pierre
  ## Screenshot
  
  ## Link to Deployed Application
+ https://time-track-67235.herokuapp.com/
 
  ## Future Development Plans
  - Users will be able to log times for more than one activity to see performance at-a-glance for multiple sports.
