@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post, Like } = require('../../models');
 
 // GET /api/users
 router.get('/', (req, res) => {  
@@ -20,7 +20,19 @@ router.get('/:id', (req, res) => {
     attributes: { exclude: ['password'] },
       where: {
         id: req.params.id
+      },
+    include: [
+      {
+        model: Post,
+        attributes: ['id', 'day', 'time', 'created_at']
+      },
+      {
+        model: Post,
+        attributes: ['day'],
+        through: Like,
+        as: 'liked_posts'
       }
+    ],
     })
       .then(dbUserData => {
         if (!dbUserData) {
@@ -60,7 +72,7 @@ router.post('/', (req, res) => {
           return;
         }
     
-        //res.json({ user: dbUserData });
+      //res.json({ user: dbUserData });
     
         // Verify user
         const validPassword = dbUserData.checkPassword(req.body.password);
