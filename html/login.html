@@ -9,7 +9,7 @@
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
         crossorigin="anonymous">
         <link rel="stylesheet" href="./c++/style.css"/>
-        <title>Time-Track</title>
+        <title>Log In</title>
     </head>
 
     <body>
@@ -40,36 +40,40 @@
                 </li>
               </ul>
             </div>
-          </nav>  <!--I'm trying to find a way to not copy and paste the nav bar, still working on it--> 
-        <div class = row>
-            <div class="col-sm-3">
-                <p>username</p>
-            </div>
-            <div class ="col-md-6">
-                <h1 style="text-align:center">40 Yard Dash</h1>
-            </div>
-            <div class="col-lg-3"></div>
-        </div>
-        <div class = row>
-            <div class="col-lg-3"></div>
-            <div class="col-sm-6">
-                <div class= "col text-center">
-                    <img id="graph-image" src="https://placehold.it/400x600" alt="graph" />
-                </div>
-            </div>
-            <div class="col-lg-3"></div>
-            
-        </div>
-        <div class= row>
-            <div class="col-lg-3"></div>
-            <div class="col-sm-6">
+          </nav>  <!--I'm trying to find a way to not copy and paste the nav bar, still working on it-->
+          <div class="card" style="width: 30rem;">
+            <div class="card-body">
+              <h4 class="card-title">Log In</h4>
+                <p>       </p>
+                <form method="POST">
+                    <div class="input-group">
+                        <label for="time">username:</label>
+                        <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="MyGreatUsername"
+                    />
+                    </div>
+                </form>
+                <h6>       </h6>
+                <form method="POST">
+                    <div class="input-group">
+                        <label for="time">password:</label>
+                        <input
+                        type="text"
+                        name="password"
+                        id="password"
+                        placeholder="SecurePassword123"
+                        />
+                    </div>
+                </form>
+                <p>           </p>
                 <div class="col text-center">
-                <button type="button" class="btn btn-primary" id="createPost">
-                    <h2>New Time</h2>
-                  </button>
-                </div>
+              <button type="button" class="btn btn-primary" id="createPost">
+                <h2>Log In</h2>
+              </button>
             </div>
-            <div class="col-lg-3"></div>
-        </div>
+            </div>
+          </div>
     </body>
-</html>

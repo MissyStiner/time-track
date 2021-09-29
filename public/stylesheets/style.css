@@ -25,3 +25,30 @@ h2{
     margin-left:20px;
     margin-right:20px;
 }
+.card {
+    margin: auto;
+    float: none;
+    margin-bottom: 20px;
+    margin-top: 100px;
+}
+h4{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+select{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+#input-group{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+p{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+h6{
+    margin-top:40px;
+    margin-bottom:40px;
+}

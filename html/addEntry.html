@@ -9,7 +9,7 @@
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
         crossorigin="anonymous">
         <link rel="stylesheet" href="./c++/style.css"/>
-        <title>Time-Track</title>
+        <title>Add Entry</title>
     </head>
 
     <body>
@@ -41,35 +41,52 @@
               </ul>
             </div>
           </nav>  <!--I'm trying to find a way to not copy and paste the nav bar, still working on it--> 
-        <div class = row>
-            <div class="col-sm-3">
-                <p>username</p>
-            </div>
-            <div class ="col-md-6">
-                <h1 style="text-align:center">40 Yard Dash</h1>
-            </div>
-            <div class="col-lg-3"></div>
-        </div>
-        <div class = row>
-            <div class="col-lg-3"></div>
-            <div class="col-sm-6">
-                <div class= "col text-center">
-                    <img id="graph-image" src="https://placehold.it/400x600" alt="graph" />
-                </div>
-            </div>
-            <div class="col-lg-3"></div>
-            
-        </div>
-        <div class= row>
-            <div class="col-lg-3"></div>
-            <div class="col-sm-6">
+          <div class="card" style="width: 25rem;">
+            <div class="card-body">
+              <h4 class="card-title">New Time</h4>
+                <form>
+                    <label class="select">Select Day</label>
+                    <select>
+                        <option value ="Sunday">
+                            Sunday
+                        </option>
+                        <option value ="Monday">
+                            Monday
+                        </option>
+                        <option value ="Tuesday">
+                            Tuesday
+                        </option>
+                        <option value ="Wednesday">
+                            Wednesday
+                        </option>
+                        <option value ="Thursday">
+                            Thursday
+                        </option>
+                        <option value ="Friday">
+                            Friday
+                        </option>
+                        <option value ="Saturday">
+                            Saturday
+                        </option>
+                    </select>
+                </form>
+                <form method="POST">
+                    <div class="input-group">
+                        <label for="time">Time(m/s)</label>
+                        <input
+                        type="int"
+                        name="time"
+                        id="time"
+                        placeholder="500"
+                        />
+                    </div>
+                </form>
+                <p>           </p>
                 <div class="col text-center">
-                <button type="button" class="btn btn-primary" id="createPost">
-                    <h2>New Time</h2>
-                  </button>
-                </div>
+              <button type="button" class="btn btn-primary" id="createPost">
+                <h2>Add Time</h2>
+              </button>
             </div>
-            <div class="col-lg-3"></div>
-        </div>
+            </div>
+          </div>
     </body>
-</html>
