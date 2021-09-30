@@ -8,42 +8,15 @@
         rel="stylesheet" 
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
         crossorigin="anonymous">
-        <link rel="stylesheet" href="./c++/style.css"/>
-        <title>Time-Track</title>
+        <link rel="stylesheet" href="../public/stylesheets/style.css"/>
+        <title>40-Yard Dash Time Tracker</title>
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-            <span class="navbar-brand mb-1 h1"><h2>Time-Track</h2></span>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Bonus -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Log In</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Log Out</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Sign Up</a>
-                </li>
-              </ul>
-            </div>
-          </nav>  <!--I'm trying to find a way to not copy and paste the nav bar, still working on it--> 
+
         <div class = row>
             <div class="col-sm-3">
-                <p>username</p>
+                <!--<p>username</p>-->
             </div>
             <div class ="col-md-6">
                 <h1 style="text-align:center">40 Yard Dash</h1>
@@ -72,8 +45,29 @@
             </div>
             <div class="col-lg-3"></div>
         </div>
+        
+<ol class="post-list">
+    {{#each posts as |post|}}
+  <li>
+    <section class="post">
+      <div class="title">
+        <span>({{day}})</span>
+        <span>({{time}})</span>
+      </div>
+      <div class="meta">
+        <!--{{like_count}} by-->
+        {{post.user.username}} on
+        {{post.created_at}}
+        |
+        <!--/post/{{id}}">-->
+      </div>
+    </section>
+  </li>
+  {{/each}}
+</ol>
 
 <script src="../html/assets/javascript/billboard.js"></script>
     </body>
 </html>
 
+<!-- <div id="chart"></div>-->
