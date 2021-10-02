@@ -1,4 +1,4 @@
-var bar chart = bb.generate({
+var barChart = bb.generate({
     bindto: "#chart",
     data: {
         type: "bar",
