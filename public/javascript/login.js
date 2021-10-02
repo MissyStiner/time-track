@@ -23,7 +23,6 @@ async function loginFormHandler(event) {
 }
 
 async function signupFormHandler(event) {
-<<<<<<< HEAD
   event.preventDefault();
 
   const username = document.querySelector('#username-signup').value.trim();
@@ -52,28 +51,3 @@ async function signupFormHandler(event) {
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
-=======
-    event.preventDefault();
-  
-    const username = document.querySelector('#username-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
-  
-    if (username && password) {
-        const response = await fetch('/api/users/login', {
-          method: 'POST',
-          body: JSON.stringify({
-            username,
-            password
-          }),
-          headers: { 'Content-Type': 'application/json' }
-        });
-         
-    if (response.ok) {
-        document.location.replace('/');
-          } else {
-           alert(response.statusText);
-          }
-        }
-      }
-  document.querySelector('.signup-form input-group').addEventListener('submit', signupFormHandler);
->>>>>>> 7595b2fe8f3cce47bf02d014949c5a68511e07ce
