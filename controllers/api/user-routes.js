@@ -50,7 +50,11 @@ router.post('/', (req, res) => {
     
         res.json(dbUserData);
       });
+<<<<<<< HEAD
     });
+=======
+    })
+>>>>>>> 7595b2fe8f3cce47bf02d014949c5a68511e07ce
   });
 
     router.post('/login', (req, res) => {
