@@ -8,7 +8,7 @@
         rel="stylesheet" 
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
         crossorigin="anonymous">
-        <link rel="stylesheet" href="../public/stylesheets/style.css"/>
+        <link rel="stylesheet" href="/stylesheets/style.css"/>
         <title>40-Yard Dash Time Tracker</title>
     </head>
 
@@ -27,8 +27,6 @@
             <div class="col-lg-3"></div>
             <div class="col-sm-6">
                 <div class= "col text-center">
-                    <img id="graph-image" src="https://github.com/MissyStiner/time-track/blob/84dafa988c86ec41da6a04bc4e415e3111402680/public/assets/line-graph.png?raw=true" alt="graph" />
-                    <div id="chart"></div>
                 </div>
             </div>
             <div class="col-lg-3"></div>
@@ -45,7 +43,9 @@
             </div>
             <div class="col-lg-3"></div>
         </div>
-        
+
+<div id="chart">This should be the chart.</div>    
+
 <ol class="post-list">
     {{#each posts as |post|}}
   <li>
@@ -66,8 +66,7 @@
   {{/each}}
 </ol>
 
-<script src="../html/assets/javascript/billboard.js"></script>
+<script src="../assets/javascript/billboard.js"></script>
     </body>
 </html>
 
-<!-- <div id="chart"></div>-->
