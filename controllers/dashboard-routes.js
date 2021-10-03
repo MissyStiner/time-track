@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Like } = require('../models');
+const { Post, User, love } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all posts for dashboard
@@ -15,14 +15,13 @@ router.get('/', withAuth, (req, res) => {
         'id',
         'time',
         'day',
-        'post_body',
         'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+        [sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = love.post_id)'), 'love_count']
       ],
       include: [
         {
           model: User,
-          attributes: ['name', 'username'],
+          attributes: ['username']
         }
       ]
     })
@@ -43,7 +42,7 @@ router.get('/', withAuth, (req, res) => {
         'time',
         'day',
         'created_at',
-        // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+        //[sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = lov.post_id)'), 'lov_count']
       ],
       include: [
         {
@@ -70,4 +69,3 @@ router.get('/', withAuth, (req, res) => {
   });
   
   module.exports = router;
-  

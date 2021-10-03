@@ -28,8 +28,8 @@ router.get('/', (req, res) => {
         {
           model: Post,
           attributes: ['day'],
-          through: Like,
-          as: 'liked_posts'
+          through: Love,
+          as: 'loved_posts'
         }
       ]
     })
@@ -148,4 +148,3 @@ router.get('/', (req, res) => {
   });
   
   module.exports = router;
-  
