@@ -1,41 +1,65 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
-    crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Home | Time Track</title>
-</head>
+  </head>
 
-<body>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark py-3 mb-5">
-    <a href="#" class="navbar-brand mb-0 ps-4 h1 fs-1">Time Track</a>
-    <ul class="navbar-nav ms-auto pe-4 fs-2">
-      <li class="nav-item me-5">
-        <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#addTimeModal">New Time</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Logout</a>
-      </li>
-    </ul>
-  </nav>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark py-3 mb-5">
+      <a href="/" class="navbar-brand mb-0 ps-4 h1 fs-1">Time Track</a>
+      <ul class="navbar-nav ms-auto pe-4 fs-2">
+        <li class="nav-item">
+          <a href="/login" class="nav-link">Login</a>
+        </li>
+        {{#if loggedIn}}
+        <li class="nav-item me-5">
+          <a
+            href="#"
+            class="nav-link"
+            data-bs-toggle="modal"
+            data-bs-target="#addTimeModal"
+          >New Time</a>
+        </li>
+        
+        
+        <li class="nav-item">
+          <a href="/" class="nav-link">Logout</a>
+        </li>
+      </ul>
+      {{/if}}
+    </nav>
 
-  <div class="modal fade" id="addTimeModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalLabel">Add New Time</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="card border-0">
-            <div class="card-body">
-              <form class="mb-3">
+    <div
+      class="modal fade"
+      id="addTimeModal"
+      tabindex="-1"
+      aria-labelledby="modalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Add New Time</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card border-0">
+              <div class="card-body">
+                <form class="mb-3">
                   <select>
                     <option value="" disabled selected>Day</option>
                     <option value="Sunday">Sunday</option>
@@ -45,55 +69,69 @@
                     <option value="Thursday">Thursday</option>
                     <option value="Friday">Friday</option>
                     <option value="Saturday">Saturday</option>
-                </select>
-              </form>
-              <form method="POST">
-                <div class="input-group">
-                  <input type="int" name="time" id="time" placeholder="Time in seconds (ie. 4.53)" />
-                </div>
-              </form>
-              <div class="col text-center"></div>
+                  </select>
+                </form>
+                <form method="POST">
+                  <div class="input-group">
+                    <input
+                      type="int"
+                      name="time"
+                      id="time"
+                      placeholder="Time in seconds (ie. 4.53)"
+                    />
+                  </div>
+                </form>
+                <div class="col text-center"></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id="createPost" class="btn btn-primary">Add</button>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >Close</button>
+            <button
+              type="button"
+              id="createPost"
+              class="btn btn-primary"
+            >Add</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-6 display-5 fw-bolder">TIMES
-        <div class="times fs-4">
-          <ol class="post-list">
-            {{#each posts as |post|}}
-              <li>
-                <section class="post">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 display-5 fw-bolder">TIMES
+          <div class="times fs-4">
+            <ol class="post-list">
+              {{#each posts as |post|}}
+                <li>
+                  <section class="post">
                     <div class="title">
-                        <span>({{day}})</span>
-                        <span>({{time}})</span>
+                      <span>({{day}})</span>
+                      <span>({{time}})</span>
                     </div>
                     <div class="meta">
-                        <!--{{like_count}} point(s)-->
-                        {{user.username}} on 
-                        {{format_date created_at}}
+                      {{like_count}}<!-- point(s)-->
+                      {{user.username}}
+                      on
+                      {{format_date created_at}}
                     </div>
-                </section>
-              </li>
-            {{/each}}
-          </ol>
+                  </section>
+                </li>
+              {{/each}}
+            </ol>
+          </div>
+        </div>
+        <div class="col-6 pt-10">
+          <div id="chart"></div>
+          <!-- CHART GOES HERE -->
         </div>
       </div>
-      <div class="col-6 pt-10">
-        <div id="chart"></div> <!-- CHART GOES HERE -->
-      </div>
     </div>
-  </div>
 
-  <script src="../assets/javascript/billboard.js"></script>
-</body>
+    <script src="../assets/javascript/billboard.js"></script>
+  </body>
 </html>
-
