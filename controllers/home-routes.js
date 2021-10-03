@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         'time',
         'day',
         'created_at',
-        // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+        [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
       ],
       include: [
         {
@@ -59,7 +59,7 @@ router.get('/post/:id', (req, res) => {
         return;
       }
 
-      const post = dbPostData.get({ plain: true });
+      const post = postData.get({ plain: true });
 
       res.render('single-post', {
         post,
