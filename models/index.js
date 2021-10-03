@@ -1,8 +1,10 @@
 // import all models
 const Post = require('./Post');
-const Love = require('./Love');
+const User = require('./User');
+const Comment = require('./Comment');
+const Like = require('./Like');
 
-// create associations
+//create associations
 User.hasMany(Post, {
   foreignKey: 'user_id'
 });

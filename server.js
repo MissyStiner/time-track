@@ -16,29 +16,19 @@ const PORT = process.env.PORT || 3001;
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
-  secret: 'secret',
+  secret: 'banana banana',
   cookie: {
     // Session will automatically expire in 10 minutes
     // expires: 10 * 60 * 1000
   },
   resave: false,
-        // Session will automatically expire in 10 minutes
-        expires: 10 * 60 * 1000
-  },
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  }),
+};
 
-  // resave: true,
-  // rolling: true,
-  // saveUninitialized: true,
-  // store: new SequelizeStore({
-  //   db: sequelize
-  // })
-
-const use = (session(sess));
-const helpers = require('./utils/helpers');
-const hbs = exphbs.create({ helpers });
-
-app.set('view engine', 'handlebars');
-
+app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));

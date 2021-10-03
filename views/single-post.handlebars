@@ -1,12 +1,21 @@
+
 {{> post-info post}}
 
 {{#if loggedIn}}
+<form id="new-comment-form">
   <div>
-    <button type="button" class="love-btn">LOVE</button>
+    <textarea class="mx-10 w-50 h-200" name="comment-body"></textarea>
   </div>
+
+  <div>
+    <button class="btn-save mx-10" type="submit">add comment</button>
+  </div>
+  
 </form>
 {{/if}}
+<div class="mx-10 p">
+{{> comments post.comments}}</div>
 
 {{#if loggedIn}}
-<!--<script src="/javascript/love.js"></script>-->
+<script src="/javascript/comment.js"></script>
 {{/if}}

@@ -1,20 +1,29 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
-const { Post, User, Comment, Loves } = require('../models');
+// const sequelize = require('../config/connection');
+const { Post, User, Comment } = require('../models');
 
 // get all posts for homepage
 router.get('/', (req, res) => {
-  console.log('================');
-    Post.findAll({
-      attributes: [
-        'id',
-        'time',
-        'day',
-        'created_at',
-        // [sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = love.post_id)'), 'love_count']
-      ],
-      include: [
-        {
+  console.log('======================');
+  Post.findAll({
+    attributes: [
+      'id',
+      'title',
+      'created_at',
+      'post_day',
+      'post_time'
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: [
+          'id',
+          'comment_text',
+          'post_id',
+          'user_id',
+          'created_at'
+        ],
+        include: {
           model: User,
           attributes: ['username']
         },
@@ -47,15 +56,21 @@ router.get('/post/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'time',
-      'day',
+      'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM loves WHERE post.id = loves.post_id)'), 'loves_count']
+      'post_day',
+      'post_time'
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_body', 'post_id', 'user_id', 'created_at'],
+        attributes: [
+          'id', 
+          'comment_text',
+          'post_id',
+          'user_id',
+          'created_at'
+        ],
         include: {
           model: User,
           attributes: ['username']
@@ -93,6 +108,15 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
 });
 
 module.exports = router;
