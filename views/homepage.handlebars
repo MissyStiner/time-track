@@ -69,22 +69,20 @@
       <div class="col-6 display-5 fw-bolder">TIMES
         <div class="times fs-4">
           <ol class="post-list">
-              {{#each posts as |post|}}
-            <li>
-              <section class="post">
-                <div class="title">
-                  <span>({{day}})</span>
-                  <span>({{time}})</span>
-                </div>
-                <div class="meta">
-                  <!--{{like_count}} by-->
-                  {{post.user.username}} on
-                  {{post.created_at}}
-                  |
-                  <!--/post/{{id}}">-->
-                </div>
-              </section>
-            </li>
+            {{#each posts as |post|}}
+              <li>
+                <section class="post">
+                    <div class="title">
+                        <span>({{day}})</span>
+                        <span>({{time}})</span>
+                    </div>
+                    <div class="meta">
+                        <!--{{like_count}} point(s)-->
+                        {{user.username}} on 
+                        {{format_date created_at}}
+                    </div>
+                </section>
+              </li>
             {{/each}}
           </ol>
         </div>

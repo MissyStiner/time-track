@@ -1,0 +1,26 @@
+
+
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="button" class="upvote-btn">like</button>
+  </div>
+</form>
+
+<div class="comments">
+  {{#each post.likes}}
+  <section class="comment">
+    <div class="meta">
+      {{user.username}} on {{created_at}}
+    </div>
+    <div class="text">
+      {{liked}}
+    </div>
+  </section>
+  {{/each}}
+</div>
+
+<script src="/javascript/upvote.js"></script>
