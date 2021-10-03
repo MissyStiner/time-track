@@ -50,7 +50,7 @@ router.get('/', (req, res) => {
     Post.create({
       day: req.body.day,
       time: req.body.time,
-      user_id: req.body.user_id
+      user_id: req.session.user_id
     })
       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
