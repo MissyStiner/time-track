@@ -3,12 +3,14 @@ async function newFormHandler(event) {
   
     const day = document.querySelector('input[name="post-day"]').value;
     const time = document.querySelector('input[name="post-time"]').value;
+    const post_body = document.querySelector('input[name="post-body"]').value;
   
     const response = await fetch(`/api/posts`, {
       method: 'POST',
       body: JSON.stringify({
         day,
-        time
+        time,
+        post_body
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -22,4 +24,4 @@ async function newFormHandler(event) {
     }
   }
   
-  document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+  document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);

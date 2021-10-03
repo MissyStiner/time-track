@@ -15,13 +15,14 @@ router.get('/', withAuth, (req, res) => {
         'id',
         'time',
         'day',
+        'post_body',
         'created_at',
         [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
       ],
       include: [
         {
           model: User,
-          attributes: ['username']
+          attributes: ['name', 'username'],
         }
       ]
     })
@@ -42,7 +43,7 @@ router.get('/', withAuth, (req, res) => {
         'time',
         'day',
         'created_at',
-        //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+        // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
       ],
       include: [
         {

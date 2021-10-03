@@ -16,6 +16,7 @@ class Post extends Model {
           'id',
           'time',
           'day',
+          'post_body',
           'created_at',
           //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
         ],
@@ -25,7 +26,7 @@ class Post extends Model {
             attributes: ['id', 'post_id', 'user_id', 'created_at'],
             include: {
               model: models.User,
-              attributes: ['username']
+              attributes: ['name', 'username']
             }
           }
         ]
