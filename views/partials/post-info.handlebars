@@ -1,12 +1,16 @@
-<article class="post">
-  <div class="title">
-    {{post_url}}
-    {{title}}
-    <span>({{format_url post_url}})</span>
-  </div>
-  <div class="meta">
-    {{like_count}} {{format_plural "point" like_count}} by {{user.username}} on {{format_date created_at}}
-    |
-    <a href="/post/{{id}}"></a>
-  </div>
-</article>
+<div class="post mb-3">
+    <header class="post-header post-header-title">
+            <a href="/post/{{id}}">{{title}} </a>
+    </header>
+
+    <div class="post-body">
+        <div class="">
+            On {{post_day}} at {{post_time}}
+        </div>
+        <div class="mt-3">
+            <b>{{user.username}}</b>
+            | {{format_date created_at}} | <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment"
+                comments.length}}</a>
+        </div>
+
+    </div>
