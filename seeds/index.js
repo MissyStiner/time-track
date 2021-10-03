@@ -6,15 +6,19 @@ const sequelize = require('../config/connection');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
-  console.log('--------------');
-  await seedUsers();
-  console.log('--------------');
+  console.log('-- INSTALLING SEEDS --');
 
-  await seedPosts();
-  console.log('--------------');
+  await users();
+  console.log('-- UPDATING USERS --');
 
-  await seedLoves();
-  console.log('--------------');
+  await posts();
+  console.log('-- UPDATING POSTS --');
+
+  await comments();
+  console.log('-- UPDATING COMMENTS --');
+
+  await loves();
+  console.log('-- UPDATING REACTIONS --');
 
   process.exit(0);
 };

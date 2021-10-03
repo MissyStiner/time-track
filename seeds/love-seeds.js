@@ -1,6 +1,6 @@
-const { Love } = require('../models');
+const { Loves } = require('../models');
 
-const lovedata = [
+const lovesdata = [
   {
     user_id: 9,
     post_id: 19
@@ -191,6 +191,6 @@ const lovedata = [
   }
 ];
 
-const seedLove = () => Love.bulkCreate(lovedata);
+const seedLoves = () => Loves.bulkCreate(lovesdata);
 
-module.exports = seedLove;
+module.exports = seedLoves;

@@ -1,15 +1,15 @@
-const User = require('./User');
+// import all models
 const Post = require('./Post');
 const Love = require('./Love');
 
-// associations
+// create associations
 User.hasMany(Post, {
-    foreignKey: 'user_id'
+  foreignKey: 'user_id'
 });
 
 Post.belongsTo(User, {
-    foreignKey: 'user_id',
-    onDelete: 'SET NULL'
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
 });
 
 User.belongsToMany(Post, {

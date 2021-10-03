@@ -1,10 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-
 // create our Post model
 class Post extends Model {
-  static loved(body, models) {
-    return models.Love.create({
+  static uploves(body, models) {
+    return models.Loves.create({
       user_id: body.user_id,
       post_id: body.post_id
     }).then(() => {
@@ -19,11 +18,12 @@ class Post extends Model {
           'post_body',
           'created_at',
           //[sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = love.post_id)'), 'love_count']
+          [sequelize.literal('(SELECT COUNT(*) FROM loves WHERE post.id = loves.post_id)'), 'loves_count']
         ],
         include: [
           {
-            //model: models.Comment,
-            attributes: ['id', 'post_id', 'user_id', 'created_at'],
+            model: models.Comment,
+            attributes: ['id', 'comment_body', 'post_id', 'user_id', 'created_at'],
             include: {
               model: models.User,
               attributes: ['name', 'username']
@@ -35,6 +35,7 @@ class Post extends Model {
   }
 }
 
+// create fields/columns for Post model
 Post.init(
   {
     id: {
