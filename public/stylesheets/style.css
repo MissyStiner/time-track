@@ -63,6 +63,11 @@ body {
     flex-wrap: wrap;
   }
   
+  .form-signin {
+    color:rgb(24, 24, 24) !important;
+  }
+
+
   main {
     margin: 20px auto;
     width: 94%;
@@ -472,6 +477,10 @@ h6{
     max-height: 300px;
   }
   
+.mb-0 {
+  color: grey !important;
+}
+
   .sr-only {
     position: absolute;
     width: 1px;

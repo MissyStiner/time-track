@@ -1,13 +1,56 @@
-<form id="login-form" class="form-signin">
-    <h1 class="mb-3 font-weight-normal text-center">Please sign in</h1>
-    <label for="email-input-login" class="sr-only">email</label>
-    <input type="text" id="email-input-login" class="form-control" placeholder="Email address" required autofocus>
-    <label for="password-input-login" class="sr-only">Password</label>
-    <input type="password" id="password-input-login" class="form-control" placeholder="Password" required>
-    </div>
-    <button type="submit" id="login-btn" class="btn">Login</button>
-    <a type="button" href="/signup" class="mb-3">Sign up</a>
-</form>
+{{!-- <div class="login-container"> --}}
+  <body>
+<div class="card-body p-5 text-center">
+    <form id="login-form" class="form-signin">
+              <div class="mb-md-5 mt-md-4 pb-5">
+                <h2 class="fw-bold mb-2 pb-5">LOGIN</h2>
+
+                <div class="form-outline form-white mb-4">
+                    <label for="email-input-login" class="sr-only">email</label>
+                    <input type="text" id="email-input-login" class="form-control" placeholder="Email address" required autofocus>
+                   </div>
+  
+                <div class="form-outline form-white mb-4">
+                  {{!-- <input type="password" placeholder="Password" class="form-control form-control-lg"> --}}
+                  <input type="password" id="password-input-login" class="form-control" placeholder="Password" required>
+                </div>
+                  <button type="submit" id="login-btn" class="btn">Login</button>
+                </form>
+                <div>
+                  <br>
+                <label for="don't-have-an-account" class="sr-only">Don't have an account?</label>
+                {{!-- <button type="submit" id="login-btn" class="btn">Sign U</button> --}}
+                <div class="mb-0">Don't have an account? <div>
+                 <br>
+                  <a href="/sign-up" class="text-secondary-50 fw-bold">SIGN UP</a>
+                </div>
+                </body>
+             </div>
+           </div>
+         </div>  
+  
+
+
+
+
+
+
+
+{{!-- <div class="wrapper"> --}}
+{{!-- <div class="container"> --}}
+{{!-- <form id="login-form" class="form-signin"> --}}
+    {{!-- <h1 class="mb-3 font-weight-normal text-center">Please sign in</h1> --}}
+    {{!-- <label for="email-input-login" class="sr-only">email</label> --}}
+    {{!-- <input type="text" id="email-input-login" class="form-control" placeholder="Email address" required autofocus> --}}
+    {{!-- <label for="password-input-login" class="sr-only">Password</label> --}}
+    {{!-- <input type="password" id="password-input-login" class="form-control" placeholder="Password" required> --}}
+    {{!-- </div> --}}
+    {{!-- <button type="submit" id="login-btn" class="btn">Login</button> --}}
+    {{!-- <a type="button" href="/signup" class="mb-3">Sign up</a> --}}
+{{!-- </form> --}}
+{{!-- </div> --}}
+{{!-- </div> --}}
 
 
 <script src="/javascript/login.js"></script>
+
