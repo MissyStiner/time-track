@@ -1,10 +1,10 @@
 async function loginFormHandler(event) {
   event.preventDefault();
 
-  const email = document.querySelector('#username-login').value.trim();
+  const username = document.querySelector('#username-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
-  if (email && password) {
+  if (username && password) {
     const response = await fetch('/api/users/login', {
       method: 'post',
       body: JSON.stringify({
@@ -26,10 +26,8 @@ async function signupFormHandler(event) {
   event.preventDefault();
 
   const username = document.querySelector('#username-signup').value.trim();
-  // const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
-  // add && email to include
   if (username && password) {
     const response = await fetch('/api/users', {
       method: 'post',
@@ -40,10 +38,10 @@ async function signupFormHandler(event) {
       headers: { 'Content-Type': 'application/json' }
     });
     
-    // check the response status
-    if (response.ok) {
-      console.log('success');
-    } else {
+
+  if (response.ok) {
+    document.location.replace('/dashboard/');
+  } else {
       alert(response.statusText);
     }
   }

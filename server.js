@@ -32,19 +32,11 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-console.log('statically served path: ', path.join(__dirname, 'public'))
 
 app.use(require('./controllers'));
 
-
-
-// turn on connection to db and server
-// force false - 
-// force true = database connection must sync with model definitions and associations.
-// sync = true makes tables recreate if there are any association changes.
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });

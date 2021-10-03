@@ -1,12 +1,14 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User } = require('../models');
+const { Post, User, Like } = require('../models');
 const withAuth = require('../utils/auth');
 
+// get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
+    console.log(req.session);
+    console.log('======================');
     Post.findAll({
       where: {
-        // use the ID from the session
         user_id: req.session.user_id
       },
       attributes: [
@@ -14,7 +16,7 @@ router.get('/', withAuth, (req, res) => {
         'time',
         'day',
         'created_at',
-        //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+        [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
       ],
       include: [
         {
@@ -24,7 +26,6 @@ router.get('/', withAuth, (req, res) => {
       ]
     })
       .then(dbPostData => {
-        // serialize data before passing to template
         const posts = dbPostData.map(post => post.get({ plain: true }));
         res.render('dashboard', { posts, loggedIn: true });
       })
@@ -33,5 +34,39 @@ router.get('/', withAuth, (req, res) => {
         res.status(500).json(err);
       });
   });
-
-module.exports = router;
+  
+  router.get('/edit/:id', withAuth, (req, res) => {
+    Post.findByPk(req.params.id, {
+      attributes: [
+        'id',
+        'time',
+        'day',
+        'created_at',
+        //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      ],
+      include: [
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ]
+    })
+      .then(dbPostData => {
+        if (dbPostData) {
+          const post = dbPostData.get({ plain: true });
+          
+          res.render('edit-post', {
+            post,
+            loggedIn: true
+          });
+        } else {
+          res.status(404).end();
+        }
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      });
+  });
+  
+  module.exports = router;
+  

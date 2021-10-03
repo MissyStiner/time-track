@@ -14,13 +14,13 @@
 
 <body>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark py-3 mb-5">
-    <a href="#" class="navbar-brand mb-0 ps-4 h1 fs-1">Time Track</a>
+    <a href="/" class="navbar-brand mb-0 ps-4 h1 fs-1">Time Track</a>
     <ul class="navbar-nav ms-auto pe-4 fs-2">
       <li class="nav-item me-5">
         <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#addTimeModal">New Time</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Logout</a>
+        <a href="/login" class="nav-link">Logout</a>
       </li>
     </ul>
   </nav>
@@ -35,6 +35,34 @@
         <div class="modal-body">
           <div class="card border-0">
             <div class="card-body">
+              <section>
+                <h2>Add New Time</h2>
+                  <form class="new-post-form">
+                    <div>
+                      <label for="post-title">Day</label>
+                      <input type="text" id="post-title" name="post-title" />
+                    </div>
+                    <div>
+                      <label for="post-url">Time</label>
+                      <input id="post-url" name="post-url" />
+                    </div>
+                    <button type="submit" class="btn">Create</button> 
+                </form>
+              </section>
+
+            {{#if posts.length}}
+              <section>
+                <h2>Your Times</h2>
+                  <ol>
+                    {{#each posts as |post|}}
+                  <li>
+                    {{> post-info post}}
+                      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit times</a>
+                  </li>
+                    {{/each}}
+                  </ol>
+              </section>
+            {{/if}}
               <form class="mb-3">
                   <select>
                     <option value="" disabled selected>Day</option>
@@ -71,28 +99,35 @@
           <ol class="post-list">
             {{#each posts as |post|}}
               <li>
+                {{> post-info post }}
+              </li>
+                {{/each}}
+          </ol>
+          <!--<ol class="post-list">
+            {{#each posts as |post|}}
+              <li>
                 <section class="post">
                     <div class="title">
                         <span>({{day}})</span>
                         <span>({{time}})</span>
                     </div>
                     <div class="meta">
-                        <!--{{like_count}} point(s)-->
+                        {{like_count}} point(s)
                         {{user.username}} on 
                         {{format_date created_at}}
                     </div>
                 </section>
               </li>
             {{/each}}
-          </ol>
+          </ol>-->
         </div>
       </div>
       <div class="col-6 pt-10">
-        <div id="chart"></div> <!-- CHART GOES HERE -->
+        <div id="chart">CHART</div> <!-- CHART GOES HERE -->
       </div>
     </div>
   </div>
-  <script src="../assets/javascript/billboard.js"></script>
+  <script src="/javascript/billboard.js"></script>
 </body>
 </html>
 
