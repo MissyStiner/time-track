@@ -1,37 +1,45 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User } = require('../models');
+const { Post, User, Comment, Likes } = require('../models');
 
+// get all posts for homepage
 router.get('/', (req, res) => {
-  console.log('================');
-    Post.findAll({
-      attributes: [
-        'id',
-        'time',
-        'day',
-        'created_at',
-        // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
-      ],
-      include: [
-        {
+  Post.findAll({
+    attributes: [
+      'id',
+      'time',
+      'day',
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)'), 'likes_count']
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_body', 'post_id', 'user_id', 'created_at'],
+        include: {
           model: User,
           attributes: ['username']
         }
-      ]
-    })
-      .then(dbPostData => {
-        const posts = dbPostData.map(post => post.get({ plain: true }));
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      const posts = dbPostData.map(post => post.get({ plain: true }));
 
-        res.render('homepage', { 
+      res.render('homepage', {
         posts,
         loggedIn: req.session.loggedIn
-       });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
       });
-  });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 // get single post
 router.get('/post/:id', (req, res) => {
@@ -44,9 +52,17 @@ router.get('/post/:id', (req, res) => {
       'time',
       'day',
       'created_at',
-      //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)'), 'likes_count']
     ],
     include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_body', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
       {
         model: User,
         attributes: ['username']
@@ -72,13 +88,13 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
-  router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
-    }
-  
-    res.render('login');
-  });
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
 
 module.exports = router;

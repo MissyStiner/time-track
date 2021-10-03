@@ -1,27 +1,41 @@
 const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { Post, User } = require('../../models');
+// const sequelize = require('../../config/connection');
+const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all users
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
+  console.log(req.session);
   console.log('======================');
   Post.findAll({
     attributes: [
       'id',
-      'time',
-      'day',
+      'title',
       'created_at',
-      //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      'post_body'
     ],
+    order: ['created_at', 'DESC'],
     include: [
+      {
+        model: Comment,
+        attributes: [
+          'id',
+          'comment_text',
+          'post_id',
+          'user_id',
+          'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
       {
         model: User,
         attributes: ['username']
       }
     ]
   })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbPostData =>
+      res.json(dbPostData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -35,15 +49,28 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'time',
-      'day',
+      'title',
       'created_at',
-      //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      'post_body'
     ],
     include: [
-            {
+      {
         model: User,
         attributes: ['username']
+      },
+      {
+        model: Comment,
+        attributes: [
+          'id',
+          'comment_text',
+          'post_id',
+          'user_id',
+          'created_at'
+        ],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
       }
     ]
   })
@@ -58,12 +85,12 @@ router.get('/:id', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-});
+})
 
 router.post('/', withAuth, (req, res) => {
   Post.create({
-    day: req.body.day,
-    time: req.body.time,
+    title: req.body.title,
+    post_body: req.body.post_body,
     user_id: req.session.user_id
   })
     .then(dbPostData => res.json(dbPostData))
@@ -73,15 +100,6 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-router.put('/like', withAuth, (req, res) => {
-  // custom static method created in models/Post.js
-  Post.like({ ...req.body, user_id: req.session.user_id }, { Like, Comment, User })
-    .then(updatedLikeData => res.json(updatedLikeData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
 
 router.put('/:id', withAuth, (req, res) => {
   Post.update(

@@ -1,10 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-
 // create our Post model
 class Post extends Model {
-  static liked(body, models) {
-    return models.Like.create({
+  static uplikes(body, models) {
+    return models.Likes.create({
       user_id: body.user_id,
       post_id: body.post_id
     }).then(() => {
@@ -17,12 +16,12 @@ class Post extends Model {
           'time',
           'day',
           'created_at',
-          //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+          [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)'), 'likes_count']
         ],
         include: [
           {
-            //model: models.Comment,
-            attributes: ['id', 'post_id', 'user_id', 'created_at'],
+            model: models.Comment,
+            attributes: ['id', 'comment_body', 'post_id', 'user_id', 'created_at'],
             include: {
               model: models.User,
               attributes: ['username']
@@ -34,6 +33,7 @@ class Post extends Model {
   }
 }
 
+// create fields/columns for Post model
 Post.init(
   {
     id: {
