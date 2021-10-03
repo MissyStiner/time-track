@@ -1,6 +1,6 @@
 const { Post } = require('../models');
 
-const postdata = [
+const postSeeds = [
   {
     day: 'Sunday',
     time: 9.56,
@@ -103,6 +103,6 @@ const postdata = [
   }
 ];
 
-const seedPosts = () => Post.bulkCreate(postdata);
+const posts = () => Post.bulkCreate(postSeeds);
 
-module.exports = seedPosts;
+module.exports = posts;

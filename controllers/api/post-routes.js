@@ -1,20 +1,27 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User } = require('../../models');
+const { Post, User, Comment, Likes } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all users
+// get all posts
 router.get('/', (req, res) => {
-  console.log('======================');
   Post.findAll({
     attributes: [
       'id',
       'time',
       'day',
       'created_at',
-      //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)'), 'likes_count']
     ],
     include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_body', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
       {
         model: User,
         attributes: ['username']
@@ -28,6 +35,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// get 1 post by id
 router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -38,10 +46,18 @@ router.get('/:id', (req, res) => {
       'time',
       'day',
       'created_at',
-      //[sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)'), 'likes_count']
     ],
     include: [
-            {
+      {
+        model: Comment,
+        attributes: ['id', 'comment_body', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
         model: User,
         attributes: ['username']
       }
@@ -60,6 +76,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// create post
 router.post('/', withAuth, (req, res) => {
   Post.create({
     day: req.body.day,
@@ -73,20 +90,22 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-router.put('/like', withAuth, (req, res) => {
+router.put('/uplikes', withAuth, (req, res) => {
   // custom static method created in models/Post.js
-  Post.like({ ...req.body, user_id: req.session.user_id }, { Like, Comment, User })
-    .then(updatedLikeData => res.json(updatedLikeData))
+  Post.uplikes({ ...req.body, user_id: req.session.user_id }, { Likes, Comment, User })
+    .then(updatedLikesData => res.json(updatedLikesData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
+// update post by id
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
-      day: req.body.day
+      day: req.body.day,
+      time: req.body.time,
     },
     {
       where: {
@@ -107,6 +126,7 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
+// delete post by id
 router.delete('/:id', withAuth, (req, res) => {
   console.log('id', req.params.id);
   Post.destroy({

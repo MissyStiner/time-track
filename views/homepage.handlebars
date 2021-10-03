@@ -16,12 +16,22 @@
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark py-3 mb-5">
     <a href="/" class="navbar-brand mb-0 ps-4 h1 fs-1">Time Track</a>
     <ul class="navbar-nav ms-auto pe-4 fs-2">
+      <li class="nav-item">
+        <a href="/login" class="nav-link">Login</a>
+      </li>
+
       <li class="nav-item me-5">
         <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#addTimeModal">New Time</a>
       </li>
-      <li class="nav-item">
-        <a href="/login" class="nav-link">Logout</a>
+
+      <li class="nav-item me-5">
+        <a href="/dashboard" class="nav-link" data-bs-toggle="modal" data-bs-target="#addTimeModal">Dashboard</a>
       </li>
+
+      <li class="nav-item">
+        <a href="/" class="nav-link">Logout</a>
+      </li>
+
     </ul>
   </nav>
 
@@ -127,7 +137,10 @@
       </div>
     </div>
   </div>
+
+ {{#if loggedIn}}
+      <script src="/javascript/logout.js"></script>
+    {{/if}}
   <script src="/javascript/billboard.js"></script>
 </body>
 </html>
-

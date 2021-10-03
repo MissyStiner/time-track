@@ -1,20 +1,25 @@
-const seedUsers = require('./user-seeds');
-const seedPosts = require('./post-seeds');
-const seedLikes = require('./like-seeds');
+const users = require('./user-seeds');
+const posts = require('./post-seeds');
+const comments = require('./comment-seeds');
+const likes = require('./likes-seeds');
 
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
-  console.log('--------------');
-  await seedUsers();
-  console.log('--------------');
+  console.log('-- INSTALLING SEEDS --');
 
-  await seedPosts();
-  console.log('--------------');
+  await users();
+  console.log('-- UPDATING USERS --');
 
-  await seedLikes();
-  console.log('--------------');
+  await posts();
+  console.log('-- UPDATING POSTS --');
+
+  await comments();
+  console.log('-- UPDATING COMMENTS --');
+
+  await likes();
+  console.log('-- UPDATING REACTIONS --');
 
   process.exit(0);
 };
