@@ -1,26 +1,12 @@
+{{> post-info post}}
 
-
-<form class="comment-form">
+{{#if loggedIn}}
   <div>
-    <textarea name="comment-body"></textarea>
-  </div>
-
-  <div>
-    <button type="button" class="upvote-btn">like</button>
+    <button type="button" class="like-btn">LIKE</button>
   </div>
 </form>
+{{/if}}
 
-<div class="comments">
-  {{#each post.likes}}
-  <section class="comment">
-    <div class="meta">
-      {{user.username}} on {{created_at}}
-    </div>
-    <div class="text">
-      {{liked}}
-    </div>
-  </section>
-  {{/each}}
-</div>
-
-<script src="/javascript/upvote.js"></script>
+{{#if loggedIn}}
+<!--<script src="/javascript/like.js"></script>-->
+{{/if}}
