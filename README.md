@@ -30,7 +30,7 @@ Additional contributions from Derimar Gray & Rob Atalla
  
  ## Screenshot
  Version 1: ![image](https://user-images.githubusercontent.com/85651869/135799637-bcdab5c8-d629-4393-8dcd-8e6d85f137d8.png)<br>
- Version 2: 
+ Version 2: ![image](https://user-images.githubusercontent.com/85651869/135799905-dbcb2eff-1c38-4cd0-9c40-de4c14497904.png)
 
  ## Future Development Plans
  - Users will be able to log times for more than one activity to see performance at-a-glance for multiple sports.
