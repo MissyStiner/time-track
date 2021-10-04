@@ -26,7 +26,8 @@ Additional contributions from Derimar Gray & Rob Atalla
  ## Screenshot
  
  ## Link to Deployed Application
- https://time-track-67235.herokuapp.com/
+ Version 1: https://time-track-67235.herokuapp.com/
+ Version 2: https://track-future.herokuapp.com/
 
  ## Future Development Plans
  - Users will be able to log times for more than one activity to see performance at-a-glance for multiple sports.
