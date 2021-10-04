@@ -176,6 +176,12 @@ body {
   color: white;
 }
 
+textarea {
+  resize: vertical;
+  /* color: lightgray; */
+  background-color: azure;
+}
+
   .btn-up {
     font-size: 1.3rem;
     text-decoration: none;
