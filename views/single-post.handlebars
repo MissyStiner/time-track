@@ -1,21 +1,30 @@
 
+  {{!-- <div class="mb-md-5 mt-md-4 pb-5"> --}}
+    <div class="card-body p-5 text-center">
+    <container id="single-post" class="form-single-post">
+
+
 {{> post-info post}}
 
 {{#if loggedIn}}
+{{!-- <div class="card-body p-5 text-center"> --}}
 <form id="new-comment-form">
   <div>
     <textarea class="mx-10 w-50 h-200" name="comment-body"></textarea>
   </div>
 
   <div>
-    <button class="btn-save mx-10" type="submit">add comment</button>
-  </div>
-  
-</form>
+    <button class="btn-save" type="submit">add comment</button>
+  {{!-- </div> --}}
+  </form>
 {{/if}}
 <div class="mx-10 p">
+  
 {{> comments post.comments}}</div>
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 {{/if}}
+</div>
+  </container>
+  </div>
