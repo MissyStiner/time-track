@@ -3,6 +3,11 @@
 Missy Stiner | Micah Duehring | Gbenga Ojo | Jack St. Pierre <br>
 Additional contributions from Derimar Gray & Rob Atalla
 
+ ## Link to Deployed Application
+ 
+ Version 1: https://time-track-67235.herokuapp.com/ <br>
+ Version 2: https://track-future.herokuapp.com/
+
  ## Description
  
  AS A 40-yard dasher <br/>
@@ -24,10 +29,8 @@ Additional contributions from Derimar Gray & Rob Atalla
 - Authentication
  
  ## Screenshot
- 
- ## Link to Deployed Application
- Version 1: https://time-track-67235.herokuapp.com/ <br>
- Version 2: https://track-future.herokuapp.com/
+ Version 1: ![image](https://user-images.githubusercontent.com/85651869/135799637-bcdab5c8-d629-4393-8dcd-8e6d85f137d8.png)<br>
+ Version 2: 
 
  ## Future Development Plans
  - Users will be able to log times for more than one activity to see performance at-a-glance for multiple sports.
