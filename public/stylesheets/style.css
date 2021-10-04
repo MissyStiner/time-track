@@ -151,11 +151,14 @@ body {
     display: block;
     width: 100%;
     margin: 13px 21;
-    border-radius: var(--border-radius);
+    /* border-radius: 25%; */
     color: var(--white);
     border: darkgray;
     outline: none;
     background-color: var(--primary);
+    border: ridge;
+    border-inline-end-width: 5px;
+    border-inline-end-color: darkgrey;
     /* align: left; */
   }
   
@@ -165,7 +168,7 @@ body {
   }
   
 .post-header {
-  border-radius: 25%;
+  /* border-radius: 25%; */
 }
 
 .post-body a {
@@ -336,7 +339,7 @@ h6{
   
   .card-header {
     color: var(--primary);
-    background-color: var(--info);
+    background-color: var(--gray-dark);
     padding: 1%;
   }
   
@@ -349,7 +352,7 @@ h6{
   .post {
     margin-bottom: 1em;
     margin-top: 1em;
-    border: 1px ridge var(--secondary);
+    border: 2px ridge var(--teal);
   }
   
   .post a {
@@ -358,7 +361,7 @@ h6{
   
   .post-header {
     color: var(--dark);
-    background-color: var(--teal);
+    background-color: chartreuse;
     padding: 1%;
   }
   

@@ -1,43 +1,45 @@
 <body>
-<div class="card-body p-5 text-center">
-<container id="dashboard" class="form-signin"></form>
-<div class="mb-md-5 mt-md-4 pb-5">
-    {{!-- <h2 class="">Dashboard: your posts</h2> --}}
-    <hr>
-    <a href="/dashboard/add/"><button id="add-post-form" class="btn-medium">Create post</button></a>
+    <div class="mb-md-5 mt-md-4 pb-5">
+                {{!-- <h2 class="">Dashboard: your posts</h2> --}}
+                <hr>
+                <a href="/dashboard/add/"><button id="add-post-form" class="btn-medium">Create post</button></a>
 
-</div>
+            </div>
+    <div class="card-body p-5 text-center">
+        <container id="dashboard" class="form-signin">
+            </form>
+            
+            {{#if posts.length}}
+            <div>
+                {{#each posts as |post|}}
+                {{> post-info post}}
+
+                <a href="/dashboard/edit/{{post.id}}"><button class="btn-up">Edit post</button></a>
+            </div>
+        </container>
+        {{/each}}
+    </div>
+    {{else}}
+    <h6 class="label">You currently do not have any posts</h6>
+
+    {{/if}}
+
+    {{!-- <div class="">
+        <h2 class="">Dashboard: your posts</h2>
+        <hr>
+        <a href="/dashboard/add/"><button id="add-post-form" class="btn-small">Create post</button></a>
+
+    </div>
     {{#if posts.length}}
-<div>
-    {{#each posts as |post|}}
-    {{> post-info post}}
+    <div>
+        {{#each posts as |post|}}
+        {{> post-info post}}
 
-    <a href="/dashboard/edit/{{post.id}}"><button class="btn-up">Edit post</button></a>
-</div>
-</container>
-{{/each}}
+        <a href="/dashboard/edit/{{post.id}}"><button class="btn-up">Edit post</button></a>
+    </div>
+    {{/each}}
 
-{{else}}
-<h6 class="label">You currently do not have any posts</h6>
+    {{else}}
+    <h6 class="label">You currently do not have any posts</h6>
 
-{{/if}}
-
-{{!-- <div class="">
-    <h2 class="">Dashboard: your posts</h2>
-    <hr>
-    <a href="/dashboard/add/"><button id="add-post-form" class="btn-small">Create post</button></a>
-
-</div>
-    {{#if posts.length}}
-<div>
-    {{#each posts as |post|}}
-    {{> post-info post}}
-
-    <a href="/dashboard/edit/{{post.id}}"><button class="btn-up">Edit post</button></a>
-</div>
-{{/each}}
-
-{{else}}
-<h6 class="label">You currently do not have any posts</h6>
-
-{{/if}} --}}
+    {{/if}} --}}
