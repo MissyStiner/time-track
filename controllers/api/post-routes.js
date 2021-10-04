@@ -7,7 +7,7 @@ router.get("/", withAuth, (req, res) => {
   console.log(req.session);
   console.log("======================");
   Post.findAll({
-    attributes: ["id", "title", "created_at", "post_day", "post_time"],
+    attributes: ["id", "post_date", "created_at", "post_day", "post_time"],
     order: ["created_at", "DESC"],
     include: [
       {
@@ -36,7 +36,7 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "created_at", "post_day", "post_time"],
+    attributes: ["id", "post_date", "created_at", "post_day", "post_time"],
     include: [
       {
         model: User,
@@ -67,7 +67,7 @@ router.get("/:id", (req, res) => {
 
 router.post("/", withAuth, (req, res) => {
   Post.create({
-    title: req.body.title,
+    post_date: req.body.post_date,
     post_day: req.body.post_day,
     post_time: req.body.post_time,
     user_id: req.session.user_id,
@@ -82,7 +82,7 @@ router.post("/", withAuth, (req, res) => {
 router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
-      title: req.body.title,
+      post_date: req.body.post_date,
       post_day: req.body.post_day,
       post_time: req.body.post_time,
     },
