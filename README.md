@@ -26,7 +26,7 @@ Additional contributions from Derimar Gray & Rob Atalla
  ## Screenshot
  
  ## Link to Deployed Application
- Version 1: https://time-track-67235.herokuapp.com/
+ Version 1: https://time-track-67235.herokuapp.com/ <br>
  Version 2: https://track-future.herokuapp.com/
 
  ## Future Development Plans
