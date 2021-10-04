@@ -6,21 +6,23 @@
                 <h2 class="fw-bold mb-2 pb-5">LOGIN</h2>
 
                 <div class="form-outline form-white mb-4">
-                    <label for="email-input-login" class="sr-only">email</label>
+                    <label for="email-input-login">Email</label>
                     <input type="text" id="email-input-login" class="form-control" placeholder="Email address" required autofocus>
                    </div>
   
                 <div class="form-outline form-white mb-4">
                   {{!-- <input type="password" placeholder="Password" class="form-control form-control-lg"> --}}
+                  <label for="password-input-login" >Password</label>
                   <input type="password" id="password-input-login" class="form-control" placeholder="Password" required>
                 </div>
                   <button type="submit" id="login-btn" class="btn">Login</button>
                 </form>
                 <div>
                   <br>
-                <label for="don't-have-an-account" class="sr-only">Don't have an account?</label>
+                <label for="don't-have-an-account">Don't have an account?</label>
                 {{!-- <button type="submit" id="login-btn" class="btn">Sign U</button> --}}
-                <div class="mb-0">Don't have an account? <div>
+                {{!-- <div class="mb-0">Don't have an account? <div> --}}
+                <br>
                  <br>
                   <a href="/sign-up" class="text-primary-50 fw-bold">SIGN UP</a>
                 </div>

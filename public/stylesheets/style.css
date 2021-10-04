@@ -71,7 +71,11 @@ body {
   }
   
   .form-signin {
-    color:rgb(24, 24, 24) !important;
+    color:white;
+  }
+
+  .form-signup {
+    color: white;
   }
 
 
