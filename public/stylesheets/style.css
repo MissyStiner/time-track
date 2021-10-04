@@ -48,7 +48,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
     margin: 0;
-    color: var(--gray-dark);
+    color: var(--white);
     line-height: 1.25;
     letter-spacing: 1px;
   }
@@ -56,6 +56,13 @@ body {
   h2 a {
     color: var(--dark);
   }
+
+  .card-body {
+    background: var(--dark);
+    border-radius: 5%;
+    margin: 20px;
+    width:350px;
+}
 
   header {
     display: flex;
