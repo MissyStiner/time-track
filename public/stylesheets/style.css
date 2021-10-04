@@ -32,7 +32,7 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: Arial, Helvetica, sans-serif;;
     font-size: 16px;
     line-height: 1.5;
     color: rgb(24, 24, 24);
@@ -61,7 +61,8 @@ body {
     background: var(--dark);
     border-radius: 5%;
     margin: 20px;
-    width:350px;
+    width:400px;
+    margin-top: 15px
 }
 
   header {
@@ -107,7 +108,7 @@ body {
   }
   
   .blog-header-logo {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-family: Arial, Helvetica, sans-serif;;
     font-size: 2.25rem;
   }
   
@@ -142,25 +143,36 @@ body {
     background-color: var(--indigo);
   }
   
-  .btn-small {
-    font-size: 1.3rem;
+  .btn-medium {
+    font-size: 2.0rem;
     text-decoration: none;
-    padding: 6px 5px;
-    width: 20%;
+    padding: 14px 18px;
+    /* width: 20%; */
     display: block;
-    margin: 5px 0;
+    width: 100%;
+    margin: 13px 21;
     border-radius: var(--border-radius);
     color: var(--white);
-    border: none;
+    border: darkgray;
     outline: none;
     background-color: var(--primary);
-    align: left;
+    /* align: left; */
   }
   
-  .btn-small:hover {
-    background-color: var(--indigo);
+  .btn-medium:hover {
+    background-color: darkgray;
+    /* var(--darkgray); */
   }
   
+.post-header {
+  border-radius: 25%;
+}
+
+.post-body a {
+  text-decoration: underline;
+  color: white;
+}
+
   .btn-up {
     font-size: 1.3rem;
     text-decoration: none;
