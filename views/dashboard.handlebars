@@ -1,31 +1,20 @@
-<section>
-  <h2>Add New Time</h2>
 
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">Day</label>
-      <input type="text" id="post-title" name="post-title" />
+    <div class="mb-md-5 mt-md-4 pb-5">
+                <br/>
+                <a href="/dashboard/add/"><button id="add-post-form" class="btn-medium">Create post</button></a>
+            </div>
+    <div class="card-body p-5 text-center">
+        <container id="dashboard" class="form-signin">
+            </form>
+            {{#if posts.length}}
+            <div>
+                {{#each posts as |post|}}
+                {{> post-info post}}
+                <a href="/dashboard/edit/{{post.id}}"><button class="btn-up">Edit post</button></a>
+            </div>
+        </container>
+        {{/each}}
     </div>
-    <div>
-      <label for="post-url">Time</label>
-      <input id="post-url" name="post-url" />
-    </div>
-    <button type="submit" class="btn">Create</button>
-  </form>
-</section>
-
-{{#if posts.length}}
-<section>
-  <h2>Your Times</h2>
-  <ol>
-    {{#each posts as |post|}}
-    <li>
-      {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit times</a>
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
-
-<script src="/javascript/add-post.js"></script>
+    {{else}}
+    <h6 class="label">You currently do not have any posts</h6>
+    {{/if}}
