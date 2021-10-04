@@ -150,7 +150,7 @@ body {
     /* width: 20%; */
     display: block;
     width: 100%;
-    margin: 13px 21;
+    /* margin: 13px 21; */
     /* border-radius: 25%; */
     color: var(--white);
     border: darkgray;
@@ -393,6 +393,16 @@ h6{
     color: var(--info);
   }
   
+  .box-dashboard {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .box-home {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
   .form-signin {
     width: 100%;
     max-width: 330px;
