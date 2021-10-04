@@ -167,13 +167,12 @@ body {
     /* var(--darkgray); */
   }
   
-.post-header {
+/* .post-header { */
   /* border-radius: 25%; */
-}
+/* } */
 
-.post-body a {
-  text-decoration: underline;
-  color: white;
+.post-body {
+  background-color: white;
 }
 
 textarea {
@@ -359,6 +358,7 @@ h6{
     margin-bottom: 1em;
     margin-top: 1em;
     border: 2px ridge var(--teal);
+    background: white;
   }
   
   .post a {
