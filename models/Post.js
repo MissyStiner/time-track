@@ -13,7 +13,7 @@ Post.init(
       primaryKey: true, 
       autoIncrement: true 
     },
-    title: {
+    post_date: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -22,7 +22,8 @@ Post.init(
       allowNull: false
     },
     post_time: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
+      allowNull: false
     },
     user_id: {
       type: DataTypes.INTEGER, 

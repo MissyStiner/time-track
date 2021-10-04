@@ -9,7 +9,7 @@ const postSeeds = [
     },
     {
         user_id: 3,
-        post_date: 'Meeting at office',
+        post_date: 'Oct/20/2021',
         post_day: 'Tuesday',
         post_time: 2.56,
     },
