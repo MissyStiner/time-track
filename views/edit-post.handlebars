@@ -3,16 +3,16 @@
   <hr>
   <form id="edit-post-form" class="card-body">
     <div>
-      <label for="post-post" class="label">Date of Run:</label>
-      <input class="input" name="post-post" type="text" value="{{post.post_date}}" />
+      <label for="post-date" class="label">Date of Run:</label>
+      <input class="input" name="post-date" type="text" value="{{post.post_date}}" />
     </div>
     <div>
       <label for="post-day" class="label">Day of Week:</label>
       <input class="textarea" name="post-day" type="text" value="{{post.post_day}}" />
     </div>
     <div>
-      <label for="post-hour" class="label">Time:</label>
-      <input class="textarea" name="post-hour" type="text" value="{{post.post_time}}" />
+      <label for="post-time" class="label">Time:</label>
+      <input class="textarea" name="post-time" type="text" value="{{post.post_time}}" />
     </div>
     <div class="">
       Created by you on {{format_date post.created_at}}

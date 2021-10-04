@@ -3,7 +3,7 @@ async function editFormHandler(event) {
   
     const post_date = document.querySelector('input[name="post-date"]').value;
     const post_day = document.querySelector('input[name="post-day"]').value;
-    const post_hour = document.querySelector('input[name="post-hour"]').value;
+    const post_time = document.querySelector('input[name="post-time"]').value;
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
       ];
@@ -13,7 +13,7 @@ async function editFormHandler(event) {
         body: JSON.stringify({
             post_date,
             post_day,
-            post_hour
+            post_time
         }),
         headers: {
             'Content-Type': 'application/json'
