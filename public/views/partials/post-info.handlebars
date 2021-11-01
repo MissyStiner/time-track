@@ -1,0 +1,17 @@
+<div class="post mb-3" style="background: whitesmoke">
+    <header class="post-header post-header-title">
+        <a href="/post/{{id}}">{{post_date}} </a>
+    </header>
+
+    <div class="post-body">
+        <div class="">
+            On {{post_day}} at {{post_time}}
+        </div>
+        <div class="mt-3">
+            <b>{{user.username}}</b>
+            | {{format_date created_at}} | <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment"
+                comments.length}}</a>
+        </div>
+
+    </div>
+</div>
