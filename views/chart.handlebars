@@ -5,10 +5,13 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script>
+const router = require('express').Router();
+// const sequelize = require('../config/connection');
+const { Post, User, Comment } = require('./models');
     //Chart information
-    function populateChart() {
+function populateChart() {
   // copy array and reverse it
-  let reversed = transactions.slice().reverse();
+  let reversed = post_time.slice().reverse();
   let sum = 0;
 
   // create date labels for chart
